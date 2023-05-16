@@ -4,9 +4,9 @@ import pandas as pd
 import numpy as np
 import webbrowser
 # import sklearn
-# from sklearn.feature_extraction.text import TfidfVectorizer
-# from sklearn.metrics.pairwise import cosine_similarity
-# import nltk
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import nltk
 from gensim.models import Word2Vec
 import itertools
 
@@ -75,58 +75,58 @@ st.markdown("<h2 style='font-family:monospace; font-size: 24px; font-weight: bol
 keyword = st.text_input("Enter a keyword to get podcast recommendations:")
 
 
-# def get_recommendations2(keyword):
-#     recommendations = []
-#     # create a TfidfVectorizer object and fit it to the podcast titles and descriptions
-#     tfidf_vectorizer = TfidfVectorizer(stop_words='english')
-#     tfidf = tfidf_vectorizer.fit_transform(
-#         podcasts_df['title'] + ' ' + podcasts_df['text'])
+def get_recommendations2(keyword):
+    recommendations = []
+    # create a TfidfVectorizer object and fit it to the podcast titles and descriptions
+    tfidf_vectorizer = TfidfVectorizer(stop_words='english')
+    tfidf = tfidf_vectorizer.fit_transform(
+        podcasts_df['title'] + ' ' + podcasts_df['text'])
 
-#     # transform the user input into a vector using the fitted vectorizer
-#     user_vector = tfidf_vectorizer.transform([keyword])
+    # transform the user input into a vector using the fitted vectorizer
+    user_vector = tfidf_vectorizer.transform([keyword])
 
-#     # calculate the cosine similarity between the user vector and all the podcast vectors
-#     cosine_similarities = cosine_similarity(user_vector, tfidf).flatten()
+    # calculate the cosine similarity between the user vector and all the podcast vectors
+    cosine_similarities = cosine_similarity(user_vector, tfidf).flatten()
 
-#     # get the indices of the top 10 podcasts with the highest cosine similarity scores
-#     top_podcasts_idx = cosine_similarities.argsort()[:-13:-1]
+    # get the indices of the top 10 podcasts with the highest cosine similarity scores
+    top_podcasts_idx = cosine_similarities.argsort()[:-13:-1]
 
-#     # get the corresponding podcast titles and descriptions
-#     recommended_podcasts = podcasts_df.iloc[top_podcasts_idx][[
-#         'title', 'link', 'rating', 'image_url', 'text']].to_dict('records')
-#     for podcast in recommended_podcasts:
-#         recommendations.append(podcast)
-#     return recommendations
+    # get the corresponding podcast titles and descriptions
+    recommended_podcasts = podcasts_df.iloc[top_podcasts_idx][[
+        'title', 'link', 'rating', 'image_url', 'text']].to_dict('records')
+    for podcast in recommended_podcasts:
+        recommendations.append(podcast)
+    return recommendations
 
 
-# # Add a button to trigger the recommendation
-# if st.button("Get Recommendations"):
-#     if keyword:
-#         recommendations = get_recommendations2(keyword)
+# Add a button to trigger the recommendation
+if st.button("Get Recommendations"):
+    if keyword:
+        recommendations = get_recommendations2(keyword)
 
-#         def get_star_rating_html(rating, max_rating=5, filled_star="★", empty_star="☆"):
-#             filled_stars = filled_star * int(rating)
-#             empty_stars = empty_star * (max_rating - int(rating))
-#             return f'<span style="display: inline-flex; align-items: center;"><span style="color: gold; margin-right: 5px;">{filled_stars}{empty_stars}</span> [{rating}]</span>'
+        def get_star_rating_html(rating, max_rating=5, filled_star="★", empty_star="☆"):
+            filled_stars = filled_star * int(rating)
+            empty_stars = empty_star * (max_rating - int(rating))
+            return f'<span style="display: inline-flex; align-items: center;"><span style="color: gold; margin-right: 5px;">{filled_stars}{empty_stars}</span> [{rating}]</span>'
 
-#         cols = st.columns(4)
-#         for i, recommendation in enumerate(recommendations):
-#             with cols[i % 4]:
-#                 if not pd.isnull(recommendation['image_url']):
-#                     st.image(str(recommendation['image_url']), width=int(200))
-#                 else:
-#                     st.image('./data/nan_image.jpeg', width=int(200))
-#                 st.markdown(
-#                     f'<h6 style="margin-top: 10px;">{recommendation["title"]}</h6>', unsafe_allow_html=True)
-#                 star_rating_html = get_star_rating_html(
-#                     recommendation['rating'])
-#                 st.markdown(f"<p>{star_rating_html}</p>",
-#                             unsafe_allow_html=True)
-#                 key_x = recommendation['link']
-#                 st.markdown(f'<a href="{key_x}" target="_blank" style="display: inline-block; padding: 5px px; background-color: #FFE026; color: black; text-decoration: none; border-radius: 2px; text-align: center; line-height: 30px; width: 130px;">Listen on iTunes</a>', unsafe_allow_html=True)
+        cols = st.columns(4)
+        for i, recommendation in enumerate(recommendations):
+            with cols[i % 4]:
+                if not pd.isnull(recommendation['image_url']):
+                    st.image(str(recommendation['image_url']), width=int(200))
+                else:
+                    st.image('./data/nan_image.jpeg', width=int(200))
+                st.markdown(
+                    f'<h6 style="margin-top: 10px;">{recommendation["title"]}</h6>', unsafe_allow_html=True)
+                star_rating_html = get_star_rating_html(
+                    recommendation['rating'])
+                st.markdown(f"<p>{star_rating_html}</p>",
+                            unsafe_allow_html=True)
+                key_x = recommendation['link']
+                st.markdown(f'<a href="{key_x}" target="_blank" style="display: inline-block; padding: 5px px; background-color: #FFE026; color: black; text-decoration: none; border-radius: 2px; text-align: center; line-height: 30px; width: 130px;">Listen on iTunes</a>', unsafe_allow_html=True)
 
-#     else:
-#         st.warning("Please enter a keyword to get podcast recommendations.")
+    else:
+        st.warning("Please enter a keyword to get podcast recommendations.")
 
 
 st.markdown("<h2 style='font-family:monospace; font-size: 24px; font-weight: bold;'>Select a podcast:</h2>",
