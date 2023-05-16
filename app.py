@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import webbrowser
-import sklearn
+# import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import nltk

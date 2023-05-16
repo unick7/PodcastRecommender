@@ -1,0 +1,10 @@
+name: stats
+dependencies:
+  - numpy
+  - pandas
+  - sklearn
+  - pickle
+  - streamlit
+  - nltk
+  - gensim.models
+  - itertools
