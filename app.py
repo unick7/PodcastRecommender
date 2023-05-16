@@ -6,7 +6,7 @@ import webbrowser
 # import sklearn
 # from sklearn.feature_extraction.text import TfidfVectorizer
 # from sklearn.metrics.pairwise import cosine_similarity
-import nltk
+# import nltk
 from gensim.models import Word2Vec
 import itertools
 
