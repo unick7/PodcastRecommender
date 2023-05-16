@@ -2,9 +2,9 @@ name: stats
 dependencies:
   - numpy
   - pandas
-  - sklearn
-  - pickle
+  - scikit-learn
+  - pickle5
   - streamlit
   - nltk
-  - gensim.models
-  - itertools
+  - gensim
+  - pycopy-itertools
