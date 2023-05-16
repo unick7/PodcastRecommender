@@ -8,4 +8,4 @@ Here, is how the Frontend of the website looks like:
 
 <br>
 
-![Front-Page](./data/img1.png)
+![Front-Page](data/img1.png)
