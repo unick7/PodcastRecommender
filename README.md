@@ -6,6 +6,8 @@ Here, is how the Frontend of the website looks like:
 ## Screenshots:
 
 <br>
+
 ![Front-Page](data/img1.png)
 <br>
+
 ![Search-Page](data/img2.png)
