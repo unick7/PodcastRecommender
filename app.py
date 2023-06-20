@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import webbrowser
-# import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import nltk
@@ -219,10 +218,10 @@ if recommend_button:
         st.warning("Please select at least one genre.")
 
 
-with open("./artifacts/w2v_model.pkl", "rb") as f:
+with open("./pickles/w2v_model.pkl", "rb") as f:
     w2v_model = pickle.load(f)
 
-with open("./artifacts/w2v_cosine_sim.pkl", "rb") as f:
+with open("./pickles/w2v_cosine_sim.pkl", "rb") as f:
     w2v_cosine_sim = pickle.load(f)
 
 
