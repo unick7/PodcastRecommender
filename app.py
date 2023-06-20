@@ -50,7 +50,7 @@ def get_recommendations(podcasts_df, vectorizer, podcast_title):
 
 podcasts_df, vectorizer = load_data()
 
-image = './data/POD.png'
+image = './data/images/POD.png'
 st.image(image, width=600)
 st.markdown("<p style='font-family:monospace'>This is a content-based recommender system for podcasts.<br> It recommends podcasts based on their textual description and similarity to the selected podcast.</p>", unsafe_allow_html=True)
 
@@ -114,7 +114,7 @@ if st.button("Get Recommendations"):
                 if not pd.isnull(recommendation['image_url']):
                     st.image(str(recommendation['image_url']), width=int(200))
                 else:
-                    st.image('./data/nan_image.jpeg', width=int(200))
+                    st.image('./data/images/nan_image.jpeg', width=int(200))
                 st.markdown(
                     f'<h6 style="margin-top: 10px;">{recommendation["title"]}</h6>', unsafe_allow_html=True)
                 star_rating_html = get_star_rating_html(
@@ -150,7 +150,7 @@ if st.button('Show Recommendations'):
             if not pd.isnull(recommendation['image_url']):
                 st.image(str(recommendation['image_url']), width=int(200))
             else:
-                st.image('./data/nan_image.jpeg', width=int(200))
+                st.image('./data/images/nan_image.jpeg', width=int(200))
             # st.image(str(recommendation['image_url']), width=int(200))
             st.markdown(
                 f'<h6 style="margin-top: 10px;">{recommendation["title"]}</h6>', unsafe_allow_html=True)
@@ -305,7 +305,7 @@ if st.button('Show Recommendations', key='show_recommendations_btn'):
             if not pd.isnull(recommendation['image_url']):
                 st.image(str(recommendation['image_url']), width=int(200))
             else:
-                st.image('./data/nan_image.jpeg', width=int(200))
+                st.image('./data/images/nan_image.jpeg', width=int(200))
             # st.image(str(recommendation['image_url']), width=int(200))
             st.markdown(
                 f'<h6 style="margin-top: 10px;">{recommendation["title"]}</h6>', unsafe_allow_html=True)
