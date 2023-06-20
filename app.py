@@ -17,7 +17,7 @@ key_counter = itertools.count()
 
 def load_data():
     podcasts_df = pd.read_csv("data/podcasts_with_images.csv")
-    vectorizer = pickle.load(open("artifacts/tfidf_vectorizer.pkl", "rb"))
+    vectorizer = pickle.load(open("pickles/tfidf_vectorizer.pkl", "rb"))
 
     return podcasts_df, vectorizer
 
